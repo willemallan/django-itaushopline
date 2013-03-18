@@ -1,25 +1,35 @@
-import os
-from setuptools import setup
+#!/usr/bin/env python
 
-itaushopline = __import__('itaushopline', {}, {}, [''])
+# from distutils.core import setup
+from setuptools import setup, find_packages
+import metadata
 
-def read(f):
-    return open(os.path.join(os.path.dirname(__file__), f)).read()
+app_name = metadata.name
+version = metadata.version
 
 setup(
-    name = "itaushopline",
-    version = itaushopline.__version__,
-    author = "Pote Interativo",
-    author_email = "gabriel@poteinterativo.com.br",
-    description = ("python client for itau shopline"),
-    long_description=read('README.md'),
-    classifiers=[
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+    name = "django-%s" % app_name,
+    version = version,
+
+    packages = find_packages(),
+    include_package_data = True,
+    author = "Willem Allan",
+    author_email = "willemarf@gmail.com",
+    description = "Django itaushopline - Package Python for django-itaushopline",
+    license = "MIT License",
+    keywords = "django itaushopline integracao",
+    classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Software Development :: Libraries :: Application Frameworks',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    license = itaushopline.__license__,
-    keywords = ["itau", "shopline"],
-    url = "https://github.com/gabrielgaliaso/pyitaushopline",
-    packages=['itaushopline',],
-    install_requires=['requests >= 0.10',]
+    platforms = ['any'],
+    url = "https://github.com/willemallan/django-itaushopline",
+    download_url = ""
 )
